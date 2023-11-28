@@ -19,6 +19,7 @@ public class News {
     private String category;
     private Date publishedDate;
     private int likes;
+    private int userId;
     private List<Comment> comments;
 
 }
