@@ -1,7 +1,6 @@
 package com.newsCorp.newsServices.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import java.util.Date;
 
@@ -11,9 +10,22 @@ import java.util.Date;
 @Table(name = "NEWS_CORP_NEWS_COMMENT")
 public class Comment {
 
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "COMMENT_ID")
+    private Long commentId;
+
+    @ManyToOne(targetEntity = News.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "newsId")
+    private News news;
+
+    @Column(name = "USER_ID")
+    public int userId;
+    @Column(name = "USERNAME")
     private String username;
+    @Column(name = "CONTENT")
     private String content;
+    @Column(name = "TIMESTAMP")
     private Date timestamp;
 
 }
