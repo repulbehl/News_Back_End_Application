@@ -24,9 +24,10 @@ public class ExternalApiServiceImpl implements ExternalApiService{
         String transferResponse;
         String validationStatus = validationUtility.externalApiDataValidation(externalApiData,apiKey,searchCriteria,hitUrl);
         if(!validationStatus.isEmpty()){
-            transferResponse= HttpStatus.NOT_FOUND.toString();
-            ExternalApiCoverage externalApiCoverage = new ExternalApiCoverage(externalApiData.status, externalApiData.totalResultSet, apiKey,searchCriteria,hitUrl,validationStatus,transferResponse);
+            transferResponse= HttpStatus.OK.toString();
+            ExternalApiCoverage externalApiCoverage = new ExternalApiCoverage(externalApiData.status, externalApiData.totalResults, apiKey,searchCriteria,hitUrl,validationStatus,transferResponse);
             externalApiRepo.save(externalApiCoverage);
+            log.info("DATA IS COMPLETED");
             return HttpStatus.OK.toString();
         }
         log.error("Validation failed ");
