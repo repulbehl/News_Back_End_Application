@@ -11,7 +11,11 @@ import org.springframework.stereotype.Component;
 public class ValidationUtility {
     public String externalApiDataValidation(ExternalApiData externalApiData, String apiKey, String searchCriteria, String hitUrl){
         if(externalApiData ==  null){
-           log.error(" External Api Data Coming is null", externalApiData);
+           log.error(" External Api Response Coming is null", externalApiData);
+           if(externalApiData.results == null){
+               log.error(" External Api Dataset Coming is null", externalApiData.results);
+               return null;
+           }
            return null;
         }
         if(apiKey.isEmpty() && searchCriteria.isEmpty() && hitUrl.isEmpty() ){

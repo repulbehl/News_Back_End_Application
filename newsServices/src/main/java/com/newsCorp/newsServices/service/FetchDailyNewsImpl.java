@@ -1,6 +1,7 @@
 package com.newsCorp.newsServices.service;
 
 import com.newsCorp.newsServices.model.DailyNews;
+import com.newsCorp.newsServices.model.DailyNewsResponse;
 import com.newsCorp.newsServices.model.ExternalApiData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,11 +19,17 @@ public class FetchDailyNewsImpl implements  FetchDailyNews{
     ExternalApiService externalApiService;
 
     @Override
-    public String fetchNewsByCountry(String apiKey, String searchValue) {
+    public DailyNewsResponse fetchNewsByCountry(String apiKey, String searchValue) {
         String fetchUrl= externalUrl+apiKey+searchString+searchValue;
         RestTemplate restTemplate = new RestTemplate();
         ExternalApiData response = restTemplate.getForObject(fetchUrl,ExternalApiData.class);
-        externalApiService.addTriggeredResponse(response,apiKey,searchValue,fetchUrl);
-        return HttpStatus.OK.toString();
+        String status=externalApiService.addTriggeredResponse(response,apiKey,searchValue,fetchUrl);
+        DailyNewsResponse dailyNewsResponse=  null;
+        if(response != null){
+            dailyNewsResponse= new DailyNewsResponse(response.results,status);
+            return  dailyNewsResponse;
+        }
+        dailyNewsResponse = new DailyNewsResponse(null,status);
+        return dailyNewsResponse;
     }
 }

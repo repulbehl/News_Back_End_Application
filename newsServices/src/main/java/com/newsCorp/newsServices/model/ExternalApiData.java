@@ -5,6 +5,6 @@ import java.util.List;
 
 public class ExternalApiData {
    public String status;
-   public Long totalResultSet;
-   public  List<DailyNews> externalDataset;
+   public Long totalResults;
+   public  List<DailyNews> results;
 }
