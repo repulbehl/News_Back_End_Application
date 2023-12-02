@@ -12,6 +12,7 @@ public class DailyGetNews {
     @GetMapping("/example")
     public void dailyNews(@RequestParam("paramName") String paramName,@RequestHeader("api_key") String apiKey)
     {
-        System.out.printf(fetchDailyNews.fetchNewsByCountry(apiKey,paramName));
+        fetchDailyNews.fetchNewsByCountry(apiKey,paramName);
+        System.out.println("right");
     }
 }
