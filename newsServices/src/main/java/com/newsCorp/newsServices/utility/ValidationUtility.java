@@ -1,6 +1,7 @@
 package com.newsCorp.newsServices.utility;
 
 import com.newsCorp.newsServices.model.ExternalApiData;
+import com.newsCorp.newsServices.model.FavouriteByUser;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -26,4 +27,17 @@ public class ValidationUtility {
         }
         return  HttpStatus.OK.toString();
     }
+
+    public String favouriteDataValidation(FavouriteByUser favouriteByUser){
+        if(favouriteByUser != null){
+            if(!favouriteByUser.title.isEmpty() && !favouriteByUser.content.isEmpty() && !favouriteByUser.category.isEmpty() && !favouriteByUser.imageUrl.isEmpty() && !favouriteByUser.language.isEmpty()){
+                log.info("Validation Completed "+ favouriteByUser.toString());
+                return  HttpStatus.OK.toString();
+            }
+        }
+        log.error("Incoming Data is not valid ");
+        return HttpStatus.NOT_FOUND.toString();
+    }
+
+
 }

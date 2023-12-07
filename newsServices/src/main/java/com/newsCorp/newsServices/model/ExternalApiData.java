@@ -6,5 +6,5 @@ import java.util.List;
 public class ExternalApiData {
    public String status;
    public Long totalResults;
-   public  List<DailyNews> results;
+   public  List<newsMapper> results;
 }

@@ -17,10 +17,11 @@ public class FavouriteNews {
     @Autowired
     FavouriteNewsService favouriteNewsService;
 
-    @PostMapping("/add/news")
-    public ResponseEntity<News> addFavouriteNews(@RequestBody FavouriteByUser favouriteByUser){
+    @PostMapping("/add/favNews")
+    public ResponseEntity<String> addFavouriteNews(@RequestBody FavouriteByUser favouriteByUser){
+        String response = favouriteNewsService.addFavNews(favouriteByUser);
         // write Logic for adding the news to FavouriteNewsRepo and business logic contains news
-        return new ResponseEntity<>(new News(),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(response,HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/remove")
