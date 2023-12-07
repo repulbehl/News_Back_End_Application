@@ -1,7 +1,8 @@
 package com.newsCorp.newsServices.service;
 
-import com.newsCorp.newsServices.model.DailyNewsResponse;
+import com.newsCorp.newsServices.model.NewsResponse;
 
 public interface FetchDailyNews {
-    DailyNewsResponse fetchNewsByCountry(String apiKey, String searchValue);
+    NewsResponse fetchNewsDaily(String apiKey, String searchValue);
+
 }

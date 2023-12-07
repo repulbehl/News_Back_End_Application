@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DailyNews {
+public class newsMapper {
     @JsonProperty("title")
     String title;
     @JsonProperty("link")

@@ -14,11 +14,9 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "COMMENT_ID")
     private Long commentId;
-
     @ManyToOne(targetEntity = News.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "newsId")
     private News news;
-
     @Column(name = "USER_ID")
     public int userId;
     @Column(name = "USERNAME")
