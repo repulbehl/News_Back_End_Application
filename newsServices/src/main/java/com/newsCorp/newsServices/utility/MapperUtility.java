@@ -19,6 +19,7 @@ public class MapperUtility {
         news.setLanguage(favouriteByUser.language);
         news.setLikes(favouriteByUser.likes);
 //        news.setNumberOfComments(favouriteByUser.comments.size());
+        // also set the user details to the news
         news.setNumberOfComments(12);
         news.setComments(favouriteByUser.comments);
         return news;

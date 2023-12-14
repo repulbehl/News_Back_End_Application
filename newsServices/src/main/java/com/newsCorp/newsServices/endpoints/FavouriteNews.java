@@ -24,6 +24,16 @@ public class FavouriteNews {
         return new ResponseEntity<>(response,HttpStatus.ACCEPTED);
     }
 
+    public ResponseEntity<News> getFavouritesByUser(String name){
+        // This will be set after the user module is created
+    return null;
+    }
+
+    @GetMapping("/byCategory")
+    public ResponseEntity<News> getFavouritesByCategory(@RequestParam String category){
+        return null;
+    }
+
     @DeleteMapping("/remove")
     public  ResponseEntity<News> deleteFavouriteNews(@RequestParam int id){
         return new ResponseEntity<News>(new News(),HttpStatus.ACCEPTED);

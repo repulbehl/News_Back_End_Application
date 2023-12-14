@@ -19,6 +19,6 @@ public class FavouriteByUser {
     public  String imageUrl;
     public   String language;
     public int likes;
-    public int userId;
+    public int userId; // To be used when the user module is ready
     public List<Comment> comments;
 }
