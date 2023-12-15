@@ -18,6 +18,10 @@ public class News {
     @Column(name = "NEWS_ID")
     private Long newsId;
 
+    // Make it not blank after making the user module
+    @Column(name = "USER_ID")
+    String userId;
+
     @Column(name = "TITLE")
     @NotBlank
     private String title;

@@ -1,6 +1,7 @@
 package com.newsCorp.newsServices.utility;
 
 import com.newsCorp.newsServices.model.ExternalApiData;
+import com.newsCorp.newsServices.model.FavouriteByCategory;
 import com.newsCorp.newsServices.model.FavouriteByUser;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +37,17 @@ public class ValidationUtility {
             }
         }
         log.error("Incoming Data is not valid ");
+        return HttpStatus.NOT_FOUND.toString();
+    }
+
+    public String favouriteCategoryValidation(FavouriteByCategory favouriteByCategory){
+        if(favouriteByCategory != null){
+            if(!favouriteByCategory.userId.isEmpty() && !favouriteByCategory.category.isEmpty()){
+                return HttpStatus.OK.toString();
+            }
+            log.error("Validation Failed UserId and category is Empty ");
+        }
+        log.error("Validation Failed incoming data is null void");
         return HttpStatus.NOT_FOUND.toString();
     }
 
