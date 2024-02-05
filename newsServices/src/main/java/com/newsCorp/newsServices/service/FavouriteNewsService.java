@@ -12,4 +12,6 @@ public interface FavouriteNewsService {
 
     List<News> getNewsByFavourites(FavouriteByCategory favouriteByCategory);
 
+    String removeFavouriteNews(int id );
+
 }

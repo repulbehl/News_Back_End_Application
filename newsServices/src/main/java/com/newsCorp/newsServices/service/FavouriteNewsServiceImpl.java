@@ -46,5 +46,15 @@ public class FavouriteNewsServiceImpl implements FavouriteNewsService{
             return null;
     }
 
+    @Override
+    public String removeFavouriteNews(int id) {
+        News  newsToBeRemoved = favouriteNewsRepo.getReferenceById(id);
+        if (newsToBeRemoved == null ){
+            return HttpStatus.NOT_FOUND.toString();
+        }
+        favouriteNewsRepo.delete(newsToBeRemoved);
+        return HttpStatus.OK.toString();
+    }
+
 
 }
