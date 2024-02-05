@@ -39,8 +39,9 @@ public class FavouriteNews {
     }
 
     @DeleteMapping("/remove")
-    public  ResponseEntity<News> deleteFavouriteNews(@RequestParam int id){
-        return new ResponseEntity<News>(new News(),HttpStatus.ACCEPTED);
+    public  ResponseEntity<String> deleteFavouriteNews(@RequestParam int id){
+       String response= favouriteNewsService.removeFavouriteNews(id) ;
+        return new ResponseEntity<>(response,HttpStatus.ACCEPTED);
     }
 
 
